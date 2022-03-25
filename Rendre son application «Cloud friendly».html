@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<!-- saved from url=(0074)http://127.0.0.1:8080/ipfs/QmUEFGrAiFxQkRmu14PDnxX6f6LmuCQusJLs4FVgVq3Yo7/ -->
+<html class="reveal-full-page"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Rendre son application «Cloud friendly»</title>
+
+    <link rel="stylesheet" href="./Rendre son application «Cloud friendly»_files/reset.css">
+    <link rel="stylesheet" href="./Rendre son application «Cloud friendly»_files/reveal.css">
+    <link rel="stylesheet" href="./Rendre son application «Cloud friendly»_files/black.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="./Rendre son application «Cloud friendly»_files/monokai.css">
+<style type="text/css">.hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}</style></head>
+
+<body class="reveal-viewport" style="--slide-width:960px; --slide-height:700px;" data-feedly-mini="yes" cz-shortcut-listen="true">
+    <div class="reveal slide center focused has-vertical-slides has-horizontal-slides ready" role="application" data-transition-speed="default" data-background-transition="fade" style="cursor: none;">
+        <div class="slides" style="width: 960px; height: 700px; inset: 50% auto auto 50%; transform: translate(-50%, -50%) scale(0.944914);">
+            <section style="top: 222px; display: block;" class="present">
+                <h2>Rendre son application «Cloud friendly»</h2>
+                <p>
+                    <small>Par <a href="http://ccoste.fr/">Charles-Édouard Coste</a> / <a style="padding-left:20px; background: transparent url(img/mastodon.ico) no-repeat 0 center;background-size:20px" href="http://occitanie.social/@charly">charly@occitanie.social</a></small>
+                </p>
+            </section>
+
+            <section style="top: 218px; display: block;" class="future" hidden="" aria-hidden="true">
+                <h2>Sommaire</h2>
+                <ol>
+                    <li>Les infrastructures cloud</li>
+                    <li>Notions fondamentales</li>
+                    <li>Habitudes à prendre</li>
+                </ol>
+            </section>
+
+            <section style="top: 0px; display: block;" class="stack future" data-previous-indexv="0" hidden="" aria-hidden="true">
+                <section data-auto-animate="" style="top: 315.5px; display: block;" class="" aria-hidden="true">
+                    <h3>Les infrastructures «cloud»</h3>
+                </section>
+                <section data-auto-animate="" class="future" aria-hidden="true" style="top: 218px; display: none;" hidden="">
+                    <h2>Les infrastructures «cloud»</h2>
+                    <ol>
+                        <li>Différents niveaux d’abstraction</li>
+                        <li>Cloud native maturity model</li>
+                        <li>Avantages et Inconvénients</li>
+                    </ol>
+                </section>
+                <section class="future" aria-hidden="true" style="top: 62.5px; display: none;" hidden="">
+                    <h3>Différents niveaux d’abstraction</h3>
+                    <img src="./Rendre son application «Cloud friendly»_files/infra.png" alt="IaaS, PaaS, SaaS">
+                </section>
+                <section class="future" aria-hidden="true" style="top: 350px; display: none;" hidden="">
+                    <img src="./Rendre son application «Cloud friendly»_files/cloud-maturity.png" alt="Cloud native maturity model">
+                </section>
+                <section class="future" aria-hidden="true" style="top: 350px; display: none;" hidden="">
+                    <h3><a href="https://12factor.net/">Les 12 facteurs</a></h3>
+                    <ol style="font-size: smaller">
+                        <li>Une base de code / plusieurs déploiements</li>
+                        <li>Ne pas dépendre de l’existence implicite de packages au niveau du système</li>
+                        <li>Stocker la configuration dans l’environnement</li>
+                        <li>pas de distinction entre les services locaux et les services tiers</li>
+                        <li>Construction, publication, exécution</li>
+                        <li>Processus</li>
+                        <li>Association de ports</li>
+                        <li>Concurrence</li>
+                        <li>Jetable</li>
+                        <li>Égalité dev/prod</li>
+                        <li>Journalisation</li>
+                        <li>Processus d’administration</li>
+                    </ol>
+                </section>
+                <section class="future" aria-hidden="true" style="top: 350px; display: none;" hidden="">
+                    <h2 class="r-fit-text" style="white-space: nowrap; display: inline-block;">Inconvénients des infrastructures cloud…</h2>
+                    <ul>
+                        <li class="fragment" data-fragment-index="0">Impact sur les méthodes de développement</li>
+                        <li class="fragment" data-fragment-index="1">Problème de riches</li>
+                        <li class="fragment" data-fragment-index="2">Mirroir aux alouettes</li>
+                    </ul>
+                </section>
+                <section class="future" aria-hidden="true" style="top: 350px; display: none;" hidden="">
+                    <h2 class="r-fit-text" style="white-space: nowrap; display: inline-block;">Avantages des infrastructures cloud…</h2>
+                    <ul>
+                        <li class="fragment" data-fragment-index="0">Élasticité des coûts et des performances</li>
+                        <li class="fragment" data-fragment-index="1">Portabilité</li>
+                        <li class="fragment" data-fragment-index="2">Maintenance simplifiée</li>
+                        <li class="fragment" data-fragment-index="3">…moyennant le respect de certaines règles</li>
+                    </ul>
+                </section>
+            </section>
+
+            <section style="top: 303px; display: none;" class="future" hidden="" aria-hidden="true">
+                <p>Malheureusement… On n’a rien sans rien&nbsp;!</p>
+            </section>
+
+            <section style="top: 0px; display: none;" hidden="" aria-hidden="true" class="stack future" data-previous-indexv="0">
+                <section style="top: 136px; display: none;">
+                    <h2>Notions fondamentales</h2>
+                    <ol>
+                        <li>Les processus</li>
+                        <li>Les variables d’environnement</li>
+                        <li>PHP Server API (SAPI)</li>
+                        <li>Signaux POSIX</li>
+                        <li>Sockets</li>
+                        <li>Flux</li>
+                    </ol>
+                </section>
+                <section class="future" aria-hidden="true" style="top: 225.5px; display: none;">
+                    <h3>Processus</h3>
+                    <ul>
+                        <li class="fragment" data-fragment-index="0">Un programme en cours d’exécution</li>
+                        <li class="fragment" data-fragment-index="1">Hérite des droits de l’utilisateur</li>
+                        <li class="fragment" data-fragment-index="2">A forcément un parent (sauf l’init)</li>
+                    </ul>
+                </section>
+                <section data-auto-animate="" class="future" aria-hidden="true" style="top: 350px; display: none;">
+                    <h3>Variables d’environnement</h3>
+                    <ul>
+                        <li class="fragment" data-fragment-index="0">Se transmettent de pères processus en fils processus</li>
+                        <li class="fragment" data-fragment-index="1">Plusieurs usages possibles…</li>
+                    </ul>
+                </section>
+                <section data-auto-animate="" class="future" aria-hidden="true" style="top: 350px; display: none;">
+                    <h3>Variables d’environnement</h3>
+                    <ul>
+                        <li>Plusieurs usages possibles…</li>
+                    </ul>
+                    <pre class="code-wrapper"><code data-trim="" data-noescape="" class="hljs routeros"><span class="hljs-builtin-name">export</span> <span class="hljs-attribute">MA_VARIABLE</span>=<span class="hljs-literal">true</span>
+<span class="hljs-builtin-name">export</span> <span class="hljs-attribute">UNE_VARIABLE</span>=<span class="hljs-string">"bonjour"</span>
+php monscript.php</code></pre>
+                </section>
+                <section data-auto-animate="" class="future" aria-hidden="true" style="top: 350px; display: none;">
+                    <h3>Variables d’environnement</h3>
+                    <ul>
+                        <li>Plusieurs usages possibles…</li>
+                    </ul>
+                    <pre class="code-wrapper"><code data-trim="" data-noescape="" class="hljs ini"><span class="hljs-comment"># .env</span>
+<span class="hljs-attr">MA_VARIABLE</span>=<span class="hljs-literal">true</span>
+<span class="hljs-attr">UNE_VARIABLE</span>=<span class="hljs-string">"bonjour"</span></code></pre>
+                    <pre class="code-wrapper"><code data-trim="" data-noescape="" class="hljs mel"><span class="hljs-keyword">source</span> .<span class="hljs-keyword">env</span>
+php monscript.php</code></pre>
+                </section>
+                <section data-auto-animate="" class="future" aria-hidden="true" style="top: 350px; display: none;">
+                    <h3>Variables d’environnement</h3>
+                    <ul>
+                        <li>Plusieurs usages possibles…</li>
+                    </ul>
+                    <pre class="code-wrapper"><code class="language-sh hljs bash" data-trim="" data-noescape="">MA_VARIABLE=<span class="hljs-literal">true</span> UNE_VARIABLE=<span class="hljs-string">"bonjour"</span> php monscript.php</code></pre>
+                </section>
+                <section data-auto-animate="" class="future" aria-hidden="true" style="top: 350px; display: none;">
+                    <h3>Variables d’environnement</h3>
+                    <ul>
+                        <li>Plusieurs usages possibles…</li>
+                    </ul>
+                    <pre class="code-wrapper"><code class="language-sh hljs bash" data-trim="" data-noescape="">docker run -e MA_VARIABLE=<span class="hljs-literal">true</span> -e UNE_VARIABLE=<span class="hljs-string">"bonjour"</span> php…</code></pre>
+                </section>
+                <section data-auto-animate="" class="future" aria-hidden="true" style="top: 350px; display: none;">
+                    <h3>Variables d’environnement</h3>
+                    <ul>
+                        <li>Plusieurs usages possibles…</li>
+                    </ul>
+                    <pre class="code-wrapper"><code class="language-sh hljs bash" data-trim="" data-noescape="">docker run --env-file .env php…</code></pre>
+                </section>
+                <section class="future" aria-hidden="true" style="top: 350px; display: none;">
+                    <h3>PHP Server API (SAPI)</h3>
+                    <ul>
+                        <li class="fragment" data-fragment-index="0">Une requête HTTP n’est pas une ligne de commande</li>
+                        <li class="fragment" data-fragment-index="1">Le serveur embarqué PHP n’est pas Apache</li>
+                        <li class="fragment" data-fragment-index="2">cgi-fcgi, cli, cli-server, embed, fpm-fcgi…</li>
+                        <li class="fragment" data-fragment-index="3"><a href="https://www.php.net/manual/en/function.php-sapi-name.php">php_sapi_name()</a></li>
+                    </ul>
+                </section>
+                <section class="future" aria-hidden="true" style="top: 350px; display: none;">
+                    <h3>Signaux POSIX</h3>
+                    <table>
+                        <thead>
+                            <tr><th>signal</th>
+                            <th>exemple</th>
+                        </tr></thead>
+                        <tbody>
+                            <tr>
+                                <td>SIGINT</td>
+                                <td>Ctrl+c</td>
+                            </tr>
+                            <tr>
+                                <td>SIGTERM</td>
+                                <td>docker stop ou kill</td>
+                            </tr>
+                            <tr>
+                                <td>SIGKILL</td>
+                                <td>kill -9 &lt;PID&gt;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                <section data-auto-animate="" class="future" aria-hidden="true" style="top: 350px; display: none;">
+                    <h3>Sockets</h3>
+                    <ul>
+                        <li class="fragment" data-fragment-index="0"><a href="https://www.php.net/manual/fr/function.socket-create">socket_create(AF_UNIX,
+                                SOCK_STREAM, 0);</a></li>
+                        <li class="fragment" data-fragment-index="1">AF_INET, AF_INET6, et AF_UNIX</li>
+                    </ul>
+                </section>
+                <section data-auto-animate="" class="future" aria-hidden="true" style="top: 350px; display: none;">
+                    <h3>Flux</h3>
+                    <pre class="fragment code-wrapper" data-fragment-index="0"><code data-trim="" data-no-escape="" class="hljs routeros">dd <span class="hljs-attribute">if</span>=/dev/sda <span class="hljs-attribute">of</span>=backup.iso
+gzip backup.iso</code></pre>
+                    <pre class="fragment code-wrapper" data-fragment-index="1"><code data-trim="" data-no-escape="" class="hljs arcade">dd <span class="hljs-keyword">if</span>=<span class="hljs-regexp">/dev/</span>sda | gzip &gt; backup.iso.gz</code></pre>
+                    <pre class="fragment code-wrapper" data-fragment-index="2"><code data-trim="" data-no-escape="" class="hljs apache"><span class="hljs-attribute">dd</span> if=/dev/sda | netcat <span class="hljs-number">192.168.0.12</span> <span class="hljs-number">1000</span></code></pre>
+                </section>
+            </section>
+            <section style="top: 0px; display: none;" hidden="" aria-hidden="true" class="stack future" data-previous-indexv="0">
+                <section style="top: 307.5px; display: none;">
+                    <h2>Habitudes à prendre</h2>
+                </section>
+                <section class="future" aria-hidden="true" style="top: 350px; display: none;">
+                    <h3>Configuration, Logs</h3>
+                    <pre class="code-wrapper"><code class="language-php hljs" data-trim="" data-no-escape=""><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-variable">$stdout</span> = fopen(<span class="hljs-string">'php://stdout'</span>, <span class="hljs-string">'w'</span>);
+
+fwrite(<span class="hljs-variable">$stdout</span>, <span class="hljs-string">'Début de page'</span>);
+
+<span class="hljs-keyword">echo</span> <span class="hljs-string">"&lt;h1&gt;Hello world !&lt;/h1&gt;"</span>;
+
+<span class="hljs-comment">// getenv('MY_HOST'), $_ENV['MY_HOST'] ou autre…</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-string">"&lt;p&gt;Welcome on <span class="hljs-subst">{$_ENV['MY_HOST']}</span>&lt;/p&gt;"</span>;
+
+fwrite(<span class="hljs-variable">$stdout</span>, <span class="hljs-string">'Fin de page'</span> . PHP_EOL);</code></pre>
+                </section>
+                <section data-auto-animate="" class="future" aria-hidden="true" style="top: 350px; display: none;">
+                    <h3>Codebase, Dépendances</h3>
+                    <pre class="code-wrapper"><code class="language-dockerfile hljs" data-trim="" data-no-escape=""><span class="hljs-comment"># Dockerfile.1 ? Ou /cli/Dockerfile ?</span>
+<span class="hljs-keyword">FROM</span> php:<span class="hljs-number">7.4</span>-cli
+<span class="hljs-keyword">RUN</span><span class="bash"> docker-php-ext-install pcntl</span>
+<span class="hljs-keyword">COPY</span><span class="bash"> . /srv</span>
+<span class="hljs-keyword">WORKDIR</span><span class="bash"> /srv</span>
+<span class="hljs-keyword">EXPOSE</span> <span class="hljs-number">8000</span>
+<span class="hljs-keyword">CMD</span><span class="bash"> [ <span class="hljs-string">"php"</span>, <span class="hljs-string">"-S"</span>, <span class="hljs-string">"0.0.0.0:8000"</span>, <span class="hljs-string">"./index.php"</span> ]</span></code></pre>
+                </section>
+                <section data-auto-animate="" class="future" aria-hidden="true" style="top: 350px; display: none;">
+                    <h3>Codebase, Dépendances</h3>
+                    <pre class="code-wrapper"><code class="language-dockerfile hljs" data-trim="" data-no-escape=""><span class="hljs-comment"># Dockerfile.2 ? Ou /apache/Dockerfile ?</span>
+<span class="hljs-keyword">FROM</span> php:<span class="hljs-number">7.4</span>-apache
+<span class="hljs-keyword">RUN</span><span class="bash"> docker-php-ext-install pcntl</span>
+<span class="hljs-keyword">COPY</span><span class="bash"> . /var/www/html/</span>
+<span class="hljs-keyword">EXPOSE</span> <span class="hljs-number">8000</span></code></pre>
+                </section>
+                <section class="future" aria-hidden="true" style="top: 350px; display: none;">
+                    <h3>Jetable</h3>
+                    <pre class="code-wrapper"><code class="language-php hljs" data-trim="" data-no-escape=""><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-variable">$stdout</span> = fopen(<span class="hljs-string">'php://stdout'</span>, <span class="hljs-string">'w'</span>);
+<span class="hljs-variable">$stderr</span> = fopen(<span class="hljs-string">'php://stderr'</span>, <span class="hljs-string">'w'</span>);
+
+fwrite(<span class="hljs-variable">$stdout</span>, <span class="hljs-string">"Je démarre\n"</span>);
+
+<span class="hljs-variable">$terminate</span> = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) <span class="hljs-keyword">use</span>(<span class="hljs-params"><span class="hljs-variable">$stdout</span></span>) </span>{
+  <span class="hljs-keyword">echo</span> fwrite(<span class="hljs-variable">$stdout</span>, <span class="hljs-string">"On m’a demandé d’arrêter\n"</span>);
+  <span class="hljs-keyword">exit</span>(<span class="hljs-number">0</span>);
+};
+
+pcntl_signal(SIGINT, <span class="hljs-variable">$terminate</span>);  <span class="hljs-comment">// Pour la console</span>
+pcntl_signal(SIGTERM, <span class="hljs-variable">$terminate</span>); <span class="hljs-comment">// Pour docker compose</span>
+
+<span class="hljs-variable">$i</span>=<span class="hljs-number">1</span>;
+<span class="hljs-keyword">while</span>(<span class="hljs-variable">$i</span>++) {
+
+  fwrite(<span class="hljs-variable">$stdout</span>, <span class="hljs-string">"Début traitement n°<span class="hljs-subst">{$i}</span>\n"</span>);
+
+  <span class="hljs-keyword">for</span> (<span class="hljs-variable">$j</span>=<span class="hljs-number">0</span>;<span class="hljs-variable">$j</span>&lt;<span class="hljs-number">10</span>;<span class="hljs-variable">$j</span>++) {
+      sleep(<span class="hljs-number">1</span>);
+      <span class="hljs-keyword">if</span> (rand(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>)) {
+          fwrite(<span class="hljs-variable">$stdout</span>, <span class="hljs-string">"Action <span class="hljs-subst">{$j}</span> réussie\n"</span>);
+      } <span class="hljs-keyword">else</span> {
+          fwrite(<span class="hljs-variable">$stdout</span>, <span class="hljs-string">"Action <span class="hljs-subst">{$j}</span> échouée\n"</span>);
+          fwrite(<span class="hljs-variable">$stderr</span>, <span class="hljs-string">"Ça a fait «shhhhhwizzz»\n"</span>);
+      }
+  }
+  fwrite(<span class="hljs-variable">$stdout</span>, <span class="hljs-string">"Fin traitement n°<span class="hljs-subst">{$i}</span>\n"</span>);
+  pcntl_signal_dispatch();
+}</code></pre>
+                </section>
+                <section data-auto-animate="" class="future" aria-hidden="true" style="top: 350px; display: none;">
+                    <h3>Affectation de ports et processus sans état</h3>
+                    <pre class="code-wrapper"><code class="language-dockerfile hljs" data-trim="" data-no-escape="">version: <span class="hljs-string">"3.0"</span>
+services:
+
+  <span class="hljs-comment"># Application avec serveur PHP interne</span>
+  app1:
+    deploy:
+      replicas: <span class="hljs-number">3</span>
+    image: app1
+    build:
+      dockerfile: Dockerfile.<span class="hljs-number">1</span>
+    ports:
+      - <span class="hljs-string">"8001:8000"</span>
+    environment:
+      - MY_HOST
+
+  <span class="hljs-comment"># Application avec Apache</span>
+  app2:
+    image: app2
+    build:
+      dockerfile: Dockerfile.<span class="hljs-number">2</span>
+    ports:
+      - <span class="hljs-string">"8002:80"</span>
+    environment:
+      - MY_HOST
+
+  <span class="hljs-comment"># Service en ligne de commande</span>
+  app3:
+    image: app3
+    build:
+      dockerfile: Dockerfile.<span class="hljs-number">1</span>
+    <span class="hljs-keyword">entrypoint</span><span class="bash">: [<span class="hljs-string">"php"</span>, <span class="hljs-string">"cron.php"</span>]</span>
+    environment:
+      - MY_HOST</code></pre>
+                </section>
+                <section class="future" aria-hidden="true" style="top: 350px; display: none;">
+                    <h3>Dépôts séparés</h3>
+                    <pre class="code-wrapper"><code class="language-dockerfile hljs" data-trim="" data-no-escape=""><span class="hljs-keyword">FROM</span> debian:unstable
+<span class="hljs-keyword">WORKDIR</span><span class="bash"> /srv</span>
+<span class="hljs-keyword">RUN</span><span class="bash"> apt-get update &amp;&amp; \
+    apt-get install -yqq git unzip composer php-cli php-curl php-sqlite3 php-dom php-xml curl php-redis php-mysql &amp;&amp; \
+    curl -fsSL -o /tmp/main.tar.gz https://github.com/symfony/demo/archive/refs/heads/main.tar.gz &amp;&amp; \
+    tar -xf /tmp/main.tar.gz -C /srv &amp;&amp; \
+    <span class="hljs-built_in">cd</span> demo-main &amp;&amp; \
+    composer update --no-progress</span>
+<span class="hljs-keyword">CMD</span><span class="bash"> [<span class="hljs-string">"php"</span>, <span class="hljs-string">"-d"</span>, <span class="hljs-string">"variables_order=EGPCS"</span>, <span class="hljs-string">"-S"</span>, <span class="hljs-string">"0.0.0.0:8000"</span>, <span class="hljs-string">"-t"</span>, <span class="hljs-string">"demo-main/public"</span>]</span></code></pre>
+                </section>
+                <section class="future" aria-hidden="true" style="top: 350px; display: none;">
+                    <h3>read_only et tmpfs</h3>
+                    <pre class="code-wrapper"><code class="language-yaml hljs" data-trim="" data-no-escape=""><span class="hljs-attr">version:</span> <span class="hljs-string">"3.0"</span>
+<span class="hljs-attr">services:</span>
+    <span class="hljs-attr">demo_prod:</span>
+        <span class="hljs-attr">image:</span> <span class="hljs-string">demo</span>
+        <span class="hljs-attr">read_only:</span> <span class="hljs-literal">true</span>
+        <span class="hljs-attr">ports:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-string">"8000:8000"</span>
+        <span class="hljs-attr">environment:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-string">APP_ENV=prod</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-string">APP_DEBUG=false</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-string">REDIS_HOST=sessions</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-string">REDIS_PORT=6379</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-string">DATABASE_URL=mysql://db_user:db_password@db:3306/db_name</span>
+        <span class="hljs-attr">tmpfs:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-string">/tmp</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-string">/srv/demo-main/var/</span></code></pre>
+                </section>
+                <section data-auto-animate="" class="future" aria-hidden="true" style="top: 350px; display: none;">
+                    <h3>Développer avec une image Docker</h3>
+                    <pre class="code-wrapper"><code class="language-yaml hljs" data-trim="" data-no-escape=""><span class="hljs-attr">version:</span> <span class="hljs-string">"3.0"</span>
+<span class="hljs-attr">services:</span>
+  <span class="hljs-attr">app:</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">app</span>
+    <span class="hljs-attr">entrypoint:</span> [<span class="hljs-string">"php"</span>, <span class="hljs-string">"cron.php"</span>]
+    <span class="hljs-attr">user:</span> <span class="hljs-string">${UID}:${GID}</span>  <span class="hljs-comment"># &lt;== évite les soucis de droits</span>
+    <span class="hljs-attr">volumes:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">.:/srv:ro</span>  <span class="hljs-comment"># &lt;== protéger son code</span>
+    <span class="hljs-attr">tmpfs:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">/srv/data</span> <span class="hljs-comment"># &lt;== pas d’état résiduel</span></code></pre>
+                </section>
+            </section>
+            <section style="top: 350px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h2>Conclusion</h2>
+                <ul>
+                    <li>Rester pragmatique. Tout ne peut pas être cloud</li>
+                    <li>Le bon sens avant tout</li>
+                    <li>Sans racines profondes, l’arbre ne tient pas.<br> Alors, faites du système !</li>
+                </ul>
+            </section>
+            <section style="top: 350px; display: none;" hidden="" aria-hidden="true" class="future">
+                <h2>Merci de votre attention</h2>
+            </section>
+        </div>
+    <div class="backgrounds"><div class="slide-background present" data-loaded="true" style="display: block;"><div class="slide-background-content"></div></div><div class="slide-background future" data-loaded="true" style="display: block;"><div class="slide-background-content"></div></div><div class="slide-background stack future" data-loaded="true" style="display: block;"><div class="slide-background-content"></div><div class="slide-background present" data-loaded="true" style="display: block;"><div class="slide-background-content"></div></div><div class="slide-background future" style="display: none;" data-loaded="true"><div class="slide-background-content"></div></div><div class="slide-background future" style="display: none;" data-loaded="true"><div class="slide-background-content"></div></div><div class="slide-background future" style="display: none;"><div class="slide-background-content"></div></div><div class="slide-background future" style="display: none;"><div class="slide-background-content"></div></div><div class="slide-background future" style="display: none;"><div class="slide-background-content"></div></div><div class="slide-background future" style="display: none;"><div class="slide-background-content"></div></div></div><div class="slide-background future" style="display: none;" data-loaded="true"><div class="slide-background-content"></div></div><div class="slide-background stack future" style="display: none;" data-loaded="true"><div class="slide-background-content"></div><div class="slide-background present" style="display: none;" data-loaded="true"><div class="slide-background-content"></div></div><div class="slide-background future" style="display: none;" data-loaded="true"><div class="slide-background-content"></div></div><div class="slide-background future" style="display: none;"><div class="slide-background-content"></div></div><div class="slide-background future" style="display: none;"><div class="slide-background-content"></div></div><div class="slide-background future" style="display: none;"><div class="slide-background-content"></div></div><div class="slide-background future" style="display: none;"><div class="slide-background-content"></div></div><div class="slide-background future" style="display: none;"><div class="slide-background-content"></div></div><div class="slide-background future" style="display: none;"><div class="slide-background-content"></div></div><div class="slide-background future" style="display: none;"><div class="slide-background-content"></div></div><div class="slide-background future" style="display: none;"><div class="slide-background-content"></div></div><div class="slide-background future" style="display: none;"><div class="slide-background-content"></div></div><div class="slide-background future" style="display: none;"><div class="slide-background-content"></div></div></div><div class="slide-background stack future" style="display: none;" data-loaded="true"><div class="slide-background-content"></div><div class="slide-background present" style="display: none;" data-loaded="true"><div class="slide-background-content"></div></div><div class="slide-background future" style="display: none;"><div class="slide-background-content"></div></div><div class="slide-background future" style="display: none;"><div class="slide-background-content"></div></div><div class="slide-background future" style="display: none;"><div class="slide-background-content"></div></div><div class="slide-background future" style="display: none;"><div class="slide-background-content"></div></div><div class="slide-background future" style="display: none;"><div class="slide-background-content"></div></div><div class="slide-background future" style="display: none;"><div class="slide-background-content"></div></div><div class="slide-background future" style="display: none;"><div class="slide-background-content"></div></div><div class="slide-background future" style="display: none;"><div class="slide-background-content"></div></div></div><div class="slide-background future" style="display: none;"><div class="slide-background-content"></div></div><div class="slide-background future" style="display: none;"><div class="slide-background-content"></div></div></div><div class="slide-number" style="display: block;"><a href="http://127.0.0.1:8080/ipfs/QmUEFGrAiFxQkRmu14PDnxX6f6LmuCQusJLs4FVgVq3Yo7/#/">
+					<span class="slide-number-a">1</span>
+					<span class="slide-number-delimiter">/</span>
+					<span class="slide-number-b">33</span>
+					</a></div><aside class="controls" data-controls-layout="bottom-right" data-controls-back-arrows="faded" style="display: block;"><button class="navigate-left" aria-label="previous slide" disabled="disabled"><div class="controls-arrow"></div></button>
+			<button class="navigate-right enabled" aria-label="next slide"><div class="controls-arrow"></div></button>
+			<button class="navigate-up" aria-label="above slide" disabled="disabled"><div class="controls-arrow"></div></button>
+			<button class="navigate-down" aria-label="below slide" disabled="disabled"><div class="controls-arrow"></div></button></aside><div class="progress" style="display: block;"><span style="transform: scaleX(0);"></span></div><div class="speaker-notes" data-prevent-swipe="" tabindex="0"></div><div class="pause-overlay"><button class="resume-button">Resume presentation</button></div><div class="aria-status" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">Rendre son application «Cloud friendly» Par Charles-Édouard Coste / charly@occitanie.social </div></div>
+
+    <script src="./Rendre son application «Cloud friendly»_files/reveal.js"></script>
+    <script src="./Rendre son application «Cloud friendly»_files/notes.js"></script>
+    <script src="./Rendre son application «Cloud friendly»_files/markdown.js"></script>
+    <script src="./Rendre son application «Cloud friendly»_files/highlight.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+            slideNumber: 'c/t',
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+        });
+    </script>
+
+
+
+<div id="feedly-mini" title="feedly Mini tookit"></div></body></html>
